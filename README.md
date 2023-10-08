@@ -16,4 +16,8 @@ Functionalities that a user can perform are:
 11. Change password
 12. Logout
 
+## Technologies used
+    ReactJS, NodeJS, MySQL
+
 JSON Web Tokens are used for authentication of user, to perform various important functionalities.
+
