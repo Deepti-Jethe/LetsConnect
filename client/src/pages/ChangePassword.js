@@ -32,20 +32,23 @@ function ChangePassword() {
     <div>
       <h1>Change Password</h1>
       <input
-        type="text"
+        type="password"
         placeholder="Old Password..."
         onChange={(event) => {
           setOldPassword(event.target.value);
         }}
       />
       <input
-        type="text"
+        type="password"
         placeholder="New Password..."
         onChange={(event) => {
           setNewPassword(event.target.value);
         }}
       />
-      <button onClick={changePassword}> Save Changes</button>
+      <button className="changePassword" onClick={changePassword}>
+        {" "}
+        Save Changes
+      </button>
     </div>
   );
 }

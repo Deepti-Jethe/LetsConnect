@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function Post() {
   let { id } = useParams();
@@ -78,30 +79,34 @@ function Post() {
   const editPost = (option) => {
     if (option === "title") {
       let newTitle = prompt("Enter New Title:");
-      axios.put(
-        "http://localhost:3001/posts/title",
-        {
-          newTitle: newTitle,
-          id: id,
-        },
-        {
-          headers: { accessToken: localStorage.getItem("accessToken") },
-        }
-      );
-      setPostObject({ ...postObject, title: newTitle });
+      if (newTitle) {
+        axios.put(
+          "http://localhost:3001/posts/title",
+          {
+            newTitle: newTitle,
+            id: id,
+          },
+          {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          }
+        );
+        setPostObject({ ...postObject, title: newTitle });
+      }
     } else {
       let newPostText = prompt("Enter New Description:");
-      axios.put(
-        "http://localhost:3001/posts/postText",
-        {
-          newText: newPostText,
-          id: id,
-        },
-        {
-          headers: { accessToken: localStorage.getItem("accessToken") },
-        }
-      );
-      setPostObject({ ...postObject, postText: newPostText });
+      if (newPostText) {
+        axios.put(
+          "http://localhost:3001/posts/postText",
+          {
+            newText: newPostText,
+            id: id,
+          },
+          {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          }
+        );
+        setPostObject({ ...postObject, postText: newPostText });
+      }
     }
   };
 
@@ -136,7 +141,7 @@ function Post() {
                 {postObject.username}
               </Link>
             </div>
-            {/* {postObject.username}{" "} */}
+            {/* <label>{postObject.Likes.length}</label> */}
             {authState.username === postObject.username && (
               <button
                 onClick={() => {
@@ -166,16 +171,17 @@ function Post() {
           {comments.map((comment, key) => {
             return (
               <div key={key} className="comment">
-                {comment.commentBody}
-                <label> Username: {comment.username}</label>
+                <div>
+                  <label className="commentUsername"> {comment.username}</label>
+                  <div className="commentBody">{comment.commentBody}</div>
+                </div>
                 {authState.username === comment.username && (
-                  <button
+                  <DeleteIcon
+                    className="deleteComment"
                     onClick={() => {
                       deleteComment(comment.id);
                     }}
-                  >
-                    X
-                  </button>
+                  />
                 )}
               </div>
             );

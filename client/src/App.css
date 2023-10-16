@@ -35,6 +35,8 @@ body {
   background-color: #006767;
   display: grid;
   place-content: center;
+  padding-left: 5px;
+  padding-right: 5px;
   color: white;
 }
 
@@ -42,11 +44,12 @@ body {
   flex: 60%;
   display: grid;
   place-content: center;
+  padding-left: 5px;
+  padding-right: 5px;
   background-color: white;
 }
 
 .post .footer {
-  /* flex: 20%; */
   flex: 15%;
   border-top: 1px solid lightgray;
   display: flex;
@@ -241,6 +244,26 @@ button {
   margin-top: 20px;
 }
 
+.comment {
+  display: flex;
+}
+
+ .comment .deleteComment {
+  position: absolute;
+  right: 7%;
+  display: flex;
+  justify-content: flex-end;
+} 
+
+.commentUsername {
+  font-weight: bold;
+}
+.commentBody{
+  padding-left: 6px;
+  color: rgb(87, 85, 85);
+  
+}
+
 #individual {
   height: 500px;
   width: 600px;
@@ -282,4 +305,23 @@ button {
 
 .loginContainer input {
   border: 2px solid #006767;
+}
+
+.basicInfo {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.accountIcon {
+  vertical-align: middle;
+}
+
+.pageNotFoundLink {
+  color: blue;
+}
+
+.changePassword {
+  background-color: #006767;
+  color: white;
 }

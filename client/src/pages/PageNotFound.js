@@ -6,7 +6,11 @@ function PageNotFound() {
     <div>
       <h1>PageNotFound :/</h1>
       <h3>
-        Go to the Home Page: <Link to="/"> Home Page</Link>
+        Go to the Home Page:{" "}
+        <Link className="pageNotFoundLink" to="/">
+          {" "}
+          Home Page
+        </Link>
       </h3>
     </div>
   );

@@ -12,7 +12,8 @@ router.get("/", validateToken, async (req, res) => {
 
 router.get("/byId/:id", async (req, res) => {
   const id = req.params.id;
-  const post = await Posts.findByPk(id);
+  const post = await Posts.findByPk(id, { include: [Likes] });
+  const likedPost = await Likes.findAll({ where: { PostId: req.body } });
   res.json(post);
 });
 
